@@ -1,0 +1,51 @@
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  scroll-snap-align: start;
+}
+
+.hero-canvas {
+  position: relative;
+  width: 1536px;
+  height: 1024px;
+  transform-origin: top center;
+  margin: 0 auto;
+}
+
+/* ========== z-index: 0 — Background ========== */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* ========== z-index: 1 — Rotate ring ========== */
+.rotate-ring {
+  position: absolute;
+  left: 535px;
+  top: 640px;
+  width: 540px;
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  animation: ring-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes ring-pulse {
+  0%, 100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}

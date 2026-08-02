@@ -1,0 +1,175 @@
+/* ============================================================
+   Left column — Title + Timeline
+   ============================================================ */
+
+.exp-left {
+  flex-shrink: 0;
+  width: 280px;
+  position: relative;
+}
+
+/* ---- Section header ---- */
+.exp-section-number {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #999;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+
+.exp-section-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.1;
+  margin-bottom: 4px;
+  letter-spacing: 0.03em;
+}
+
+.exp-section-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: #777;
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+/* ---- Timeline ---- */
+.exp-timeline {
+  position: relative;
+  display: flex;
+  gap: 0;
+}
+
+/* Vertical track line */
+.exp-timeline-track {
+  position: relative;
+  width: 2px;
+  flex-shrink: 0;
+  background: #d9d4cc;
+  border-radius: 1px;
+  min-height: 250px;
+  margin-right: 20px;
+}
+
+/* Active dot — moves vertically */
+.exp-timeline-dot-active {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: #4a7c5c;
+  border-radius: 50%;
+  transition: top 340ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 2;
+}
+
+/* Pulsing rings around active dot */
+.exp-timeline-dot-active::before,
+.exp-timeline-dot-active::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid #4a7c5c;
+  animation: dot-pulse 2s ease-out infinite;
+}
+
+.exp-timeline-dot-active::after {
+  animation-delay: 0.7s;
+}
+
+@keyframes dot-pulse {
+  0%   { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(3.5); opacity: 0; }
+}
+
+/* Timeline items wrapper */
+.exp-timeline-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Each timeline button */
+.exp-timeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 12px 0 14px;
+  height: 88px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 220ms ease;
+  opacity: 0.45;
+}
+
+.exp-timeline-item.is-active {
+  opacity: 1;
+}
+
+.exp-timeline-item:hover {
+  opacity: 0.8;
+}
+
+.exp-timeline-item.is-active:hover {
+  opacity: 1;
+}
+
+/* Index number (01, 02, 03) */
+.exp-tl-index {
+  font-size: 13px;
+  font-weight: 500;
+  color: #999;
+  letter-spacing: 0.06em;
+  transition: color 220ms ease;
+}
+
+.exp-timeline-item.is-active .exp-tl-index {
+  color: #222;
+}
+
+/* Company name */
+.exp-tl-company {
+  font-size: 16px;
+  font-weight: 600;
+  color: #555;
+  letter-spacing: 0.02em;
+  transition: color 220ms ease;
+}
+
+.exp-timeline-item.is-active .exp-tl-company {
+  color: #111;
+}
+
+/* Date */
+.exp-tl-date {
+  font-size: 12px;
+  font-weight: 400;
+  color: #aaa;
+  letter-spacing: 0.02em;
+  transition: color 220ms ease;
+}
+
+.exp-timeline-item.is-active .exp-tl-date {
+  color: #4a7c5c;
+}
+
+/* ---- Orbit doodle ---- */
+.exp-orbit-doodle {
+  position: absolute;
+  bottom: -40px;
+  left: -20px;
+  width: 220px;
+  height: auto;
+  object-fit: contain;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.35;
+}

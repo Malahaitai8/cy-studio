@@ -1,0 +1,163 @@
+/* ============================================================
+   Experience Modal — overlay & paper container
+   ============================================================ */
+
+.exp-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+  will-change: opacity;
+}
+
+.exp-modal-overlay.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ---- Modal container ---- */
+.exp-modal {
+  position: relative;
+  width: 90vw;
+  max-width: 1080px;
+  max-height: 80vh;
+  background: #faf8f5;
+  border: 1.5px solid #e0dbd2;
+  border-radius: 6px;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.08),
+    0 16px 48px rgba(0, 0, 0, 0.16);
+  padding: 44px 48px 36px;
+  overflow-y: auto;
+  transform: scale(0.98);
+  opacity: 0;
+  transition: transform 220ms ease-out, opacity 200ms ease;
+  will-change: transform, opacity;
+}
+
+.exp-modal.is-visible {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* ---- Close button ---- */
+.exp-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid #e0dbd2;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #999;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 150ms ease, border-color 150ms ease;
+  line-height: 1;
+}
+
+.exp-modal-close:hover {
+  color: #333;
+  border-color: #bbb;
+}
+
+/* ---- Header ---- */
+.exp-modal-header {
+  margin-bottom: 28px;
+  padding-right: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e8e3da;
+}
+
+.exp-modal-company {
+  font-size: 26px;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: 0.02em;
+  margin-bottom: 4px;
+}
+
+.exp-modal-role {
+  font-size: 15px;
+  font-weight: 500;
+  color: #555;
+  letter-spacing: 0.03em;
+  margin-bottom: 2px;
+}
+
+.exp-modal-date {
+  font-size: 13px;
+  font-weight: 400;
+  color: #4a7c5c;
+  letter-spacing: 0.03em;
+}
+
+/* ---- Body: two columns ---- */
+.exp-modal-body {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 24px;
+}
+
+.exp-modal-col {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ---- Sections ---- */
+.exp-modal-section {
+  margin-bottom: 24px;
+}
+
+.exp-modal-section:last-child {
+  margin-bottom: 0;
+}
+
+.exp-modal-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+  padding-left: 12px;
+  border-left: 3px solid #4a7c5c;
+}
+
+.exp-modal-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: #666;
+  line-height: 1.8;
+}
+
+/* ---- Bottom tags ---- */
+.exp-modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid #e8e3da;
+}
+
+.exp-modal-tag {
+  display: inline-block;
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #666;
+  background: #f0ede6;
+  border: 1px solid #e0dbd2;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+}

@@ -1,0 +1,155 @@
+/* ============================================================
+   Project Gallery — image viewer inside modal
+   ============================================================ */
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---- Header: preview label + arrows ---- */
+.gallery-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.gallery-preview-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #999;
+  letter-spacing: 0.06em;
+}
+
+.gallery-current {
+  color: #c8ff00;
+  font-weight: 700;
+}
+
+.gallery-arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.gallery-arrow {
+  width: 26px;
+  height: 26px;
+  border: 1px solid #555;
+  background: #2a2a2a;
+  border-radius: 50%;
+  font-size: 15px;
+  color: #ccc;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: border-color 150ms, color 150ms;
+}
+
+.gallery-arrow:hover:not(:disabled) {
+  border-color: #c8ff00;
+  color: #fff;
+}
+
+.gallery-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* ---- Main image container ---- */
+.gallery-main {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.gallery-main-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  animation: gallery-fade-in 250ms ease;
+}
+
+@keyframes gallery-fade-in {
+  from { opacity: 0.3; }
+  to   { opacity: 1; }
+}
+
+.gallery-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: #666;
+  font-size: 13px;
+}
+
+/* ---- Thumbnails ---- */
+.gallery-thumbnails {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.gallery-thumb {
+  width: 116px;
+  height: 76px;
+  border: 2px solid transparent;
+  border-radius: 2px;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.06);
+  transition: border-color 180ms;
+  flex-shrink: 0;
+}
+
+.gallery-thumb.is-active {
+  border-color: #c8ff00;
+}
+
+.gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- Pagination dots ---- */
+.gallery-dots {
+  display: flex;
+  gap: 5px;
+  margin-top: 6px;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.gallery-dot {
+  width: 5px;
+  height: 5px;
+  border: none;
+  border-radius: 50%;
+  background: #555;
+  cursor: pointer;
+  padding: 0;
+  transition: background 150ms;
+}
+
+.gallery-dot.is-active {
+  background: #c8ff00;
+}

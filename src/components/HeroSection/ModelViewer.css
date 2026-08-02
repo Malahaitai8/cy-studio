@@ -1,0 +1,126 @@
+.model-viewer {
+  position: absolute;
+  left: 570px;
+  top: 110px;
+  width: 540px;
+  height: 880px;
+  z-index: 2;
+  pointer-events: auto;
+  cursor: grab;
+}
+
+.model-viewer:active {
+  cursor: grabbing;
+}
+
+/* ---- Hover hint ---- */
+.model-hover-hint {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  font-size: 14px;
+  color: #666;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 5;
+}
+
+.model-viewer:hover .model-hover-hint {
+  opacity: 1;
+}
+
+.model-canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.model-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.model-loading span {
+  font-size: 14px;
+  color: #888;
+  font-family:
+    "Noto Sans SC",
+    sans-serif;
+}
+
+/* ---- Polaroid photo popup (portal to body) ---- */
+.photo-popup {
+  position: fixed;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+  animation: photo-in 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@keyframes photo-in {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+.photo-popup.closing {
+  animation: photo-out 0.3s ease forwards;
+}
+
+@keyframes photo-out {
+  from {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.3);
+  }
+}
+
+.photo-popup-inner {
+  background: #fff;
+  padding: 12px 12px 40px 12px;
+  border-radius: 2px;
+  transform: rotate(-2deg);
+  filter: drop-shadow(0 14px 20px rgba(0, 0, 0, 0.18));
+}
+
+.photo-popup-inner img {
+  display: block;
+  width: 200px;
+  height: 240px;
+  object-fit: cover;
+  background: #e8e8e8;
+}
+
+.photo-popup-hint {
+  display: block;
+  text-align: center;
+  margin-top: 6px;
+  font-size: 11px;
+  color: #999;
+  font-family:
+    "Noto Sans SC",
+    sans-serif;
+  letter-spacing: 0.04em;
+}

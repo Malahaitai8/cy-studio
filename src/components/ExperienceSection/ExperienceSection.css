@@ -1,0 +1,250 @@
+/* ============================================================
+   Experience Section — layout & background
+   ============================================================ */
+
+.experience-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #f5f2ed;
+  overflow: hidden;
+  padding: 80px 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+}
+
+/* ---- Dot grid background ---- */
+.exp-bg-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, #d9d4cc 1.2px, transparent 1.2px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* ---- Cross decorations ---- */
+.exp-bg-crosses {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.exp-cross {
+  position: absolute;
+  font-size: 18px;
+  color: #c5bfb4;
+  font-weight: 300;
+  user-select: none;
+}
+
+.exp-cross-1 { top: 8%; right: 6%;  animation: cross-float 5.5s ease-in-out infinite; }
+.exp-cross-2 { top: 40%; left: 3%;  animation: cross-float 6.2s ease-in-out 1.5s infinite; }
+.exp-cross-3 { bottom: 12%; right: 8%; animation: cross-float 4.8s ease-in-out 3.0s infinite; }
+
+@keyframes cross-float {
+  0%, 100% { opacity: 0.25; transform: translateY(0) rotate(0deg); }
+  25%      { opacity: 0.55; transform: translateY(-6px) rotate(8deg); }
+  50%      { opacity: 0.30; transform: translateY(2px) rotate(-3deg); }
+  75%      { opacity: 0.50; transform: translateY(-4px) rotate(5deg); }
+}
+
+/* ---- 4-point star decorations ---- */
+.exp-bg-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.exp-star {
+  position: absolute;
+  color: #c5bfb4;
+  user-select: none;
+}
+
+.exp-star-1 { top: 65%;   left: 7%;   font-size: 14px; animation: star-float 4.5s ease-in-out infinite; }
+.exp-star-2 { top: 22%;   left: 48%;  font-size: 10px; animation: star-float 5.2s ease-in-out 1.0s infinite; }
+.exp-star-3 { bottom: 20%; right: 12%; font-size: 16px; animation: star-float 3.8s ease-in-out 2.2s infinite; }
+.exp-star-4 { top: 10%;   right: 25%; font-size: 11px; animation: star-float 4.0s ease-in-out 0.5s infinite; }
+.exp-star-5 { bottom: 45%; left: 52%; font-size: 12px; animation: star-float 5.8s ease-in-out 3.2s infinite; }
+
+@keyframes star-float {
+  0%, 100% { opacity: 0.15; transform: translateY(0) rotate(0deg) scale(0.7); }
+  30%      { opacity: 0.50; transform: translateY(-8px) rotate(15deg) scale(1.2); }
+  60%      { opacity: 0.22; transform: translateY(3px) rotate(-5deg) scale(0.8); }
+  85%      { opacity: 0.45; transform: translateY(-4px) rotate(8deg) scale(1.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .exp-cross { animation: none; }
+  .exp-star { animation: none; }
+
+  .exp-card-page.fade-out {
+    animation: fadeOutReduced 200ms ease-out forwards;
+  }
+  .exp-card-page.fade-in {
+    animation: fadeInReduced 200ms ease-out forwards;
+  }
+
+  .exp-timeline-dot-active {
+    transition: top 200ms ease-out;
+  }
+}
+
+@keyframes fadeOutReduced {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes fadeInReduced {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ---- Content wrapper ---- */
+.exp-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  max-width: 1280px;
+  width: 100%;
+  padding: 0 40px;
+  gap: 60px;
+}
+
+/* ---- Left column ~32% ---- */
+/* Handled in ExperienceTimeline.css */
+
+/* ---- Right column ~68% ---- */
+.exp-right {
+  flex: 1;
+  min-width: 0;
+  margin-top: 60px;
+}
+
+.exp-card-wrapper {
+  position: relative;
+}
+
+/* ---- Page visibility ---- */
+.exp-card-page {
+  transition: opacity 0.01s;
+}
+
+.exp-card-page.is-hidden {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.exp-card-page.is-visible {
+  position: relative;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ---- Page transitions ---- */
+.exp-card-page.fade-out {
+  animation: pageFlipOut 340ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.exp-card-page.fade-in {
+  animation: pageFlipIn 380ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes pageFlipOut {
+  from {
+    opacity: 1;
+    transform: translateX(0) rotateY(0deg) scale(1);
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-40px) rotateY(12deg) scale(0.97);
+    filter: blur(1px);
+  }
+}
+
+@keyframes pageFlipIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px) rotateY(-8deg) scale(0.97);
+    filter: blur(1px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) rotateY(0deg) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* ---- Page-turn nav hints (arrows + dots) ---- */
+.exp-nav-hints {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.exp-nav-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #d5cfc5;
+  border-radius: 50%;
+  background: transparent;
+  color: #999;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 150ms, border-color 150ms;
+  line-height: 1;
+  padding: 0;
+}
+
+.exp-nav-hint:hover:not(:disabled) {
+  color: #4a7c5c;
+  border-color: #4a7c5c;
+}
+
+.exp-nav-hint:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.exp-nav-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.exp-nav-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: none;
+  background: #d5cfc5;
+  cursor: pointer;
+  padding: 0;
+  transition: background 150ms, transform 150ms;
+}
+
+.exp-nav-dot.is-active {
+  background: #4a7c5c;
+  transform: scale(1.4);
+}
+
+.exp-nav-dot:hover:not(.is-active) {
+  background: #b5afa5;
+}

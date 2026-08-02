@@ -1,0 +1,227 @@
+/* ============================================================
+   Project Info — full-width content in modal
+   ============================================================ */
+
+.project-info {
+  width: 100%;
+  background: rgba(20, 20, 20, 0.85);
+  border-radius: 6px;
+  padding: 16px 20px;
+  flex-shrink: 0;
+}
+
+/* ---- Titles ---- */
+.pi-english-title {
+  font-size: 11px;
+  font-weight: 500;
+  color: #999;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+
+.pi-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+/* ---- Divider ---- */
+.pi-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.pi-divider-line {
+  flex: 1;
+  height: 1px;
+  background: #444;
+}
+
+.pi-divider-star {
+  color: #c8ff00;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+/* ---- Summary ---- */
+.pi-summary {
+  font-size: 13px;
+  font-weight: 400;
+  color: #ccc;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  max-width: 75%;
+}
+
+/* ---- Meta rows — horizontal layout ---- */
+.pi-meta {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 14px;
+}
+
+.pi-meta-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.pi-meta-label {
+  font-weight: 600;
+  color: #888;
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+}
+
+.pi-meta-value {
+  color: #eee;
+  font-weight: 400;
+}
+
+/* ---- Tags ---- */
+.pi-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.pi-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #ccc;
+  border: 1px solid #555;
+  border-radius: 20px;
+  letter-spacing: 0.03em;
+}
+
+/* ---- Product Features ---- */
+.pi-features {
+  margin-bottom: 12px;
+}
+
+.pi-feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 20px;
+}
+
+.pi-feature-item {
+  position: relative;
+  padding-left: 14px;
+  font-size: 11px;
+  font-weight: 400;
+  color: #ccc;
+  line-height: 1.5;
+}
+
+.pi-feature-item::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #c8ff00;
+  font-size: 9px;
+}
+
+/* ---- User Flow ---- */
+.pi-userflow {
+  margin-bottom: 12px;
+}
+
+.pi-flow-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pi-flow-item {
+  font-size: 11px;
+  font-weight: 400;
+  color: #bbb;
+  line-height: 1.6;
+  margin-bottom: 2px;
+}
+
+/* ---- Links — inline with section title ---- */
+.pi-links {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 14px;
+}
+
+.pi-link {
+  position: relative;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.03em;
+  transition: color 150ms;
+  padding-bottom: 3px;
+}
+
+.pi-link:hover {
+  color: #c8ff00;
+}
+
+.pi-link-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #c8ff00;
+  border-radius: 1px;
+}
+
+/* ---- Contributions ---- */
+.pi-contributions {
+  margin-bottom: 14px;
+}
+
+.pi-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.pi-contrib-list {
+  list-style: none;
+  counter-reset: contrib;
+  padding: 0;
+  margin: 0;
+}
+
+.pi-contrib-item {
+  position: relative;
+  padding-left: 18px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #ddd;
+  line-height: 1.6;
+  margin-bottom: 5px;
+  counter-increment: contrib;
+}
+
+.pi-contrib-item::before {
+  content: counter(contrib) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 600;
+  color: #c8ff00;
+  font-size: 11px;
+}

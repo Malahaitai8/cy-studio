@@ -1,0 +1,47 @@
+.interests-panel {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  pointer-events: none;
+}
+
+.interests-title-row {
+  position: absolute;
+  left: 1100px;
+  top: 800px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.star-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.interests-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #111;
+  font-family:
+    "Noto Sans SC",
+    sans-serif;
+}
+
+.interests-icons {
+  position: absolute;
+  left: 1080px;
+  top: 752px;
+  width: 365px;
+  height: auto;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: transform 180ms ease;
+}
+
+.interests-icons:hover {
+  transform: translateY(-2px);
+}
