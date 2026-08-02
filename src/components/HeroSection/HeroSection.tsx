@@ -3,6 +3,7 @@ import HeaderNav from "./HeaderNav";
 import HeroLeftContent from "./HeroLeftContent";
 import FloatingNotes from "./FloatingNotes";
 import InterestsPanel from "./InterestsPanel";
+import ErrorBoundary from "../ErrorBoundary";
 import "./HeroSection.css";
 
 const ModelViewer = lazy(() => import("./ModelViewer"));
@@ -53,9 +54,11 @@ export default function HeroSection() {
         />
 
         {/* z-index: 2 — 3D Model (lazy loaded) */}
-        <Suspense fallback={null}>
-          <ModelViewer />
-        </Suspense>
+        <ErrorBoundary fallback={null}>
+          <Suspense fallback={null}>
+            <ModelViewer />
+          </Suspense>
+        </ErrorBoundary>
 
         {/* z-index: 3 — Left content + Notes + Interests */}
         <HeroLeftContent />
