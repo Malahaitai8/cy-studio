@@ -2,13 +2,8 @@ import { useRef, Suspense, useState, useMemo, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import * as THREE from "three";
 import "./ModelViewer.css";
-
-// Configure Draco decoder for useGLTF
-const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath("https://www.gstatic.com/draco/versioned/decoders/1.5.7/");
 
 /**
  * Traverse scene and hide objects that look like floor/ground planes.
@@ -50,9 +45,7 @@ function removeFloor(scene: THREE.Group): THREE.Group {
 }
 
 function Model() {
-  const { scene } = useGLTF("/cao-ying.glb", true, (loader) => {
-    loader.setDRACOLoader(dracoLoader);
-  });
+  const { scene } = useGLTF("/cao-ying.glb", true);
   const groupRef = useRef<THREE.Group>(null);
 
   const clonedScene = useMemo(() => {
@@ -95,17 +88,12 @@ function Model() {
 export default function ModelViewer() {
   const [loading, setLoading] = useState(true);
   const [showPhoto, setShowPhoto] = useState(false);
-  const [closing, setClosing] = useState(false);
   const [hintDismissed, setHintDismissed] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
   const closePhoto = () => {
-    setClosing(true);
-    setTimeout(() => {
-      setShowPhoto(false);
-      setClosing(false);
-    }, 350);
+    setShowPhoto(false);
   };
 
   // Toggle photo on double-click

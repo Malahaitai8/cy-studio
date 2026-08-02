@@ -11,7 +11,7 @@ interface Props {
 
 export default function ProjectCard({ project, index, dealt, onViewDetail }: Props) {
   const [isFlipped, setIsFlipped] = useState(false);
-  const entranceTimerRef = useRef<ReturnType<typeof setTimeout>>();
+  const entranceTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   // Auto-flip on entrance — staggered per card
   useEffect(() => {

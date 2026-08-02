@@ -28,6 +28,7 @@ export interface Experience {
   metric: ExperienceMetric;
   tags: string[];
   modal: ExperienceModalContent;
+  isEarlierExperience?: boolean;
 }
 
 export const experiences: Experience[] = [
@@ -145,6 +146,7 @@ export const experiences: Experience[] = [
       label: "product planning\nfrom scratch",
       detail: "小程序 · 智能助手",
     },
+    isEarlierExperience: true,
     tags: ["Product Strategy", "Healthcare", "Mini Program", "AI Assistant"],
     modal: {
       background:
