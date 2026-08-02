@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import HeaderNav from "./HeaderNav";
 import HeroLeftContent from "./HeroLeftContent";
-import ModelViewer from "./ModelViewer";
 import FloatingNotes from "./FloatingNotes";
 import InterestsPanel from "./InterestsPanel";
 import "./HeroSection.css";
+
+const ModelViewer = lazy(() => import("./ModelViewer"));
 
 const BASE_WIDTH = 1536;
 const BASE_HEIGHT = 1024;
@@ -51,8 +52,10 @@ export default function HeroSection() {
           draggable={false}
         />
 
-        {/* z-index: 2 — 3D Model */}
-        <ModelViewer />
+        {/* z-index: 2 — 3D Model (lazy loaded) */}
+        <Suspense fallback={null}>
+          <ModelViewer />
+        </Suspense>
 
         {/* z-index: 3 — Left content + Notes + Interests */}
         <HeroLeftContent />

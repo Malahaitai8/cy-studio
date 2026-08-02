@@ -2,8 +2,13 @@ import { useRef, Suspense, useState, useMemo, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import * as THREE from "three";
 import "./ModelViewer.css";
+
+// Configure Draco decoder for useGLTF
+const dracoLoader = new DRACOLoader();
+dracoLoader.setDecoderPath("https://www.gstatic.com/draco/versioned/decoders/1.5.7/");
 
 /**
  * Traverse scene and hide objects that look like floor/ground planes.
@@ -45,7 +50,9 @@ function removeFloor(scene: THREE.Group): THREE.Group {
 }
 
 function Model() {
-  const { scene } = useGLTF("/cao-ying.glb");
+  const { scene } = useGLTF("/cao-ying.glb", true, (loader) => {
+    loader.setDRACOLoader(dracoLoader);
+  });
   const groupRef = useRef<THREE.Group>(null);
 
   const clonedScene = useMemo(() => {
@@ -169,12 +176,9 @@ export default function ModelViewer() {
     </div>
 
     {/* Polaroid photo popup — portal to body for top-level z-index */}
-    {(showPhoto || closing) &&
+    {showPhoto &&
       createPortal(
-        <div
-          className={`photo-popup${closing ? " closing" : ""}`}
-          onClick={(e) => e.stopPropagation()}
-        >
+        <div className="photo-popup" onClick={(e) => e.stopPropagation()}>
           <div className="photo-popup-inner">
             <img
               src="/照片是这个.jpg"
